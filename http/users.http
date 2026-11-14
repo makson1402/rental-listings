@@ -1,0 +1,50 @@
+### Register a landlord
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "email": "landlord@example.com",
+  "password": "password123",
+  "firstName": "Jan",
+  "lastName": "Kowalski",
+  "phone": "+48 600 100 200",
+  "role": "LANDLORD"
+}
+
+### Register a user
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "password123",
+  "firstName": "Anna",
+  "lastName": "Nowak",
+  "phone": "+48 600 300 400",
+  "role": "USER"
+}
+
+### All users
+GET http://localhost:8080/api/users
+
+### Only landlords
+GET http://localhost:8080/api/users?role=LANDLORD
+
+### Update user 1
+PUT http://localhost:8080/api/users/1
+Content-Type: application/json
+
+{
+  "email": "landlord@example.com",
+  "password": "newpassword123",
+  "firstName": "Jan",
+  "lastName": "Kowalski",
+  "phone": "+48 600 999 999",
+  "role": "LANDLORD"
+}
+
+### Delete user 2
+DELETE http://localhost:8080/api/users/2
+
+### Delete user 1
+DELETE http://localhost:8080/api/users/1
