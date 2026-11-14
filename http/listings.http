@@ -1,0 +1,42 @@
+### Add a listing
+POST http://localhost:8080/api/listings
+Content-Type: application/json
+
+{
+  "city": "Lublin",
+  "address": "ul. Nadbystrzycka 38",
+  "rooms": 2,
+  "area": 48.5,
+  "price": 2400,
+  "parking": true,
+  "description": "Bright apartment near the university.",
+  "contactName": "Jan Kowalski",
+  "contactPhone": "+48 600 100 200",
+  "contactEmail": "jan@example.com"
+}
+
+### All listings
+GET http://localhost:8080/api/listings
+
+### Filter by city
+GET http://localhost:8080/api/listings?city=lublin
+
+### Update listing 1
+PUT http://localhost:8080/api/listings/1
+Content-Type: application/json
+
+{
+  "city": "Lublin",
+  "address": "ul. Nadbystrzycka 38",
+  "rooms": 2,
+  "area": 48.5,
+  "price": 2200,
+  "parking": false,
+  "description": "Price reduced.",
+  "contactName": "Jan Kowalski",
+  "contactPhone": "+48 600 100 200",
+  "contactEmail": "jan@example.com"
+}
+
+### Delete listing 1
+DELETE http://localhost:8080/api/listings/1
