@@ -1,0 +1,32 @@
+### Add photo 1 to listing 1
+POST http://localhost:8080/api/listings/1/photos
+Content-Type: application/json
+
+{
+  "url": "https://picsum.photos/id/1018/800/600"
+}
+
+### Add photo 2 to listing 1
+POST http://localhost:8080/api/listings/1/photos
+Content-Type: application/json
+
+{
+  "url": "https://picsum.photos/id/1025/800/600"
+}
+
+### Invalid URL (expected 400)
+POST http://localhost:8080/api/listings/1/photos
+Content-Type: application/json
+
+{
+  "url": "not-a-link"
+}
+
+### Photos of listing 1
+GET http://localhost:8080/api/listings/1/photos
+
+### Photos of a missing listing (expected 404)
+GET http://localhost:8080/api/listings/999/photos
+
+### Delete photo 1 from listing 1
+DELETE http://localhost:8080/api/listings/1/photos/1
