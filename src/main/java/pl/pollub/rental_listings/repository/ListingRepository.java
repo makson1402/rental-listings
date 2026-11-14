@@ -12,4 +12,7 @@ public interface ListingRepository extends JpaRepository<Listing, Long> {
 
     /** Finds listings in the given city, ignoring letter case. */
     List<Listing> findByCityIgnoreCase(String city);
+
+    /** Finds all listings published by the given landlord. */
+    List<Listing> findByOwnerId(Long ownerId);
 }
