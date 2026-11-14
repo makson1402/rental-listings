@@ -1,5 +1,5 @@
-### Add a listing
-POST http://localhost:8080/api/listings
+### Add a listing for landlord 1
+POST http://localhost:8080/api/listings?ownerId=1
 Content-Type: application/json
 
 {
@@ -9,19 +9,33 @@ Content-Type: application/json
   "area": 48.5,
   "price": 2400,
   "parking": true,
-  "description": "Bright apartment near the university.",
-  "contactName": "Jan Kowalski",
-  "contactPhone": "+48 600 100 200",
-  "contactEmail": "jan@example.com"
+  "description": "Bright apartment near the university."
+}
+
+### Try to add a listing as a regular user (expected 400)
+POST http://localhost:8080/api/listings?ownerId=2
+Content-Type: application/json
+
+{
+  "city": "Lublin",
+  "address": "ul. Zana 10",
+  "rooms": 1,
+  "area": 30,
+  "price": 1800,
+  "parking": false,
+  "description": "Should be rejected."
 }
 
 ### All listings
 GET http://localhost:8080/api/listings
 
+### Listings of landlord 1
+GET http://localhost:8080/api/listings?ownerId=1
+
 ### Filter by city
 GET http://localhost:8080/api/listings?city=lublin
 
-### Update listing 1
+### Update listing 1 (owner stays the same)
 PUT http://localhost:8080/api/listings/1
 Content-Type: application/json
 
@@ -32,10 +46,7 @@ Content-Type: application/json
   "area": 48.5,
   "price": 2200,
   "parking": false,
-  "description": "Price reduced.",
-  "contactName": "Jan Kowalski",
-  "contactPhone": "+48 600 100 200",
-  "contactEmail": "jan@example.com"
+  "description": "Price reduced."
 }
 
 ### Delete listing 1
