@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Listing – Rental Listings</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="index.html" class="logo">Rental Listings</a>
+        <nav>
+            <a href="index.html">Listings</a>
+            <a href="listing-form.html">Add listing</a>
+            <a href="register.html">Register</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <a href="index.html" class="back-link">← Back to listings</a>
+    <p id="message" class="message" hidden></p>
+
+    <article id="listing-details"></article>
+
+    <div id="listing-actions" class="actions" hidden>
+        <a id="edit-link" class="button secondary" href="#">Edit</a>
+        <button id="delete-button" class="button danger" type="button">Delete</button>
+    </div>
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/listing.js"></script>
+</body>
+</html>
