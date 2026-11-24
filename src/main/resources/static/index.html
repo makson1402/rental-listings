@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rental Listings</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="index.html" class="logo">Rental Listings</a>
+        <nav>
+            <a href="index.html">Listings</a>
+            <a href="listing-form.html">Add listing</a>
+            <a href="register.html">Register</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <h1>Apartments for rent</h1>
+
+    <form id="filter-form" class="filter-bar">
+        <input type="text" id="city" placeholder="City, e.g. Lublin">
+        <button type="submit" class="button">Search</button>
+        <button type="button" id="clear-filter" class="button secondary">Clear</button>
+    </form>
+
+    <p id="message" class="message" hidden></p>
+    <section id="listings" class="listing-grid"></section>
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register – Rental Listings</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="index.html" class="logo">Rental Listings</a>
+        <nav>
+            <a href="index.html">Listings</a>
+            <a href="listing-form.html">Add listing</a>
+            <a href="register.html">Register</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container narrow">
+    <h1>Create an account</h1>
+    <p id="message" class="message" hidden></p>
+
+    <form id="register-form" class="panel">
+        <div class="form-row">
+            <div class="form-field">
+                <label for="firstName">First name</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-field">
+                <label for="lastName">Last name</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+        </div>
+
+        <div class="form-field">
+            <label for="password">Password (at least 8 characters)</label>
+            <input type="password" id="password" name="password" minlength="8" required>
+        </div>
+
+        <div class="form-field">
+            <label>Account type</label>
+            <div class="radio-group">
+                <label><input type="radio" name="role" value="USER" checked> I'm looking for an apartment</label>
+                <label><input type="radio" name="role" value="LANDLORD"> I'm a landlord</label>
+            </div>
+        </div>
+
+        <button type="submit" class="button">Create account</button>
+    </form>
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/register.js"></script>
+</body>
+</html>
