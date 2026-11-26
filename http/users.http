@@ -1,5 +1,5 @@
 ### Register a landlord
-POST http://localhost:8080/api/users
+POST http://localhost:8080/api/auth/register
 Content-Type: application/json
 
 {
@@ -11,8 +11,10 @@ Content-Type: application/json
   "role": "LANDLORD"
 }
 
+> {% client.global.set("landlordToken", response.body.token); %}
+
 ### Register a user
-POST http://localhost:8080/api/users
+POST http://localhost:8080/api/auth/register
 Content-Type: application/json
 
 {
@@ -24,27 +26,31 @@ Content-Type: application/json
   "role": "USER"
 }
 
-### All users
-GET http://localhost:8080/api/users
+> {% client.global.set("userToken", response.body.token); %}
 
-### Only landlords
-GET http://localhost:8080/api/users?role=LANDLORD
-
-### Update user 1
-PUT http://localhost:8080/api/users/1
+### Log in as the landlord
+POST http://localhost:8080/api/auth/login
 Content-Type: application/json
 
 {
   "email": "landlord@example.com",
-  "password": "newpassword123",
-  "firstName": "Jan",
-  "lastName": "Kowalski",
-  "phone": "+48 600 999 999",
-  "role": "LANDLORD"
+  "password": "password123"
 }
 
-### Delete user 2
-DELETE http://localhost:8080/api/users/2
+> {% client.global.set("landlordToken", response.body.token); %}
 
-### Delete user 1
-DELETE http://localhost:8080/api/users/1
+### Wrong password (expected 401)
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "landlord@example.com",
+  "password": "wrong-password"
+}
+
+### My account
+GET http://localhost:8080/api/users/me
+Authorization: Bearer {{landlordToken}}
+
+### Without a token (expected 401)
+GET http://localhost:8080/api/users/me
