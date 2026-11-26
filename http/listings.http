@@ -1,5 +1,6 @@
-### Add a listing for landlord 1
-POST http://localhost:8080/api/listings?ownerId=1
+### Add a listing as the landlord
+POST http://localhost:8080/api/listings
+Authorization: Bearer {{landlordToken}}
 Content-Type: application/json
 
 {
@@ -12,8 +13,8 @@ Content-Type: application/json
   "description": "Bright apartment near the university."
 }
 
-### Try to add a listing as a regular user (expected 400)
-POST http://localhost:8080/api/listings?ownerId=2
+### Add a listing without a token (expected 401)
+POST http://localhost:8080/api/listings
 Content-Type: application/json
 
 {
@@ -26,17 +27,27 @@ Content-Type: application/json
   "description": "Should be rejected."
 }
 
-### All listings
+### Add a listing as a regular user (expected 403)
+POST http://localhost:8080/api/listings
+Authorization: Bearer {{userToken}}
+Content-Type: application/json
+
+{
+  "city": "Lublin",
+  "address": "ul. Zana 10",
+  "rooms": 1,
+  "area": 30,
+  "price": 1800,
+  "parking": false,
+  "description": "Should be rejected."
+}
+
+### All listings (public)
 GET http://localhost:8080/api/listings
 
-### Listings of landlord 1
-GET http://localhost:8080/api/listings?ownerId=1
-
-### Filter by city
-GET http://localhost:8080/api/listings?city=lublin
-
-### Update listing 1 (owner stays the same)
+### Update listing 1 as its owner
 PUT http://localhost:8080/api/listings/1
+Authorization: Bearer {{landlordToken}}
 Content-Type: application/json
 
 {
@@ -49,5 +60,6 @@ Content-Type: application/json
   "description": "Price reduced."
 }
 
-### Delete listing 1
+### Delete listing 1 as its owner
 DELETE http://localhost:8080/api/listings/1
+Authorization: Bearer {{landlordToken}}

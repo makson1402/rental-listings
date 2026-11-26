@@ -39,7 +39,7 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    /** Accepted in requests but never returned in responses. */
+    /** BCrypt hash of the password. Accepted in requests but never returned in responses. */
     @NotBlank
     @Size(min = 8, message = "Password must have at least 8 characters")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

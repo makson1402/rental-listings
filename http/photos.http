@@ -1,5 +1,6 @@
 ### Add photo 1 to listing 1
 POST http://localhost:8080/api/listings/1/photos
+Authorization: Bearer {{landlordToken}}
 Content-Type: application/json
 
 {
@@ -8,6 +9,7 @@ Content-Type: application/json
 
 ### Add photo 2 to listing 1
 POST http://localhost:8080/api/listings/1/photos
+Authorization: Bearer {{landlordToken}}
 Content-Type: application/json
 
 {
@@ -16,6 +18,7 @@ Content-Type: application/json
 
 ### Invalid URL (expected 400)
 POST http://localhost:8080/api/listings/1/photos
+Authorization: Bearer {{landlordToken}}
 Content-Type: application/json
 
 {
@@ -30,3 +33,4 @@ GET http://localhost:8080/api/listings/999/photos
 
 ### Delete photo 1 from listing 1
 DELETE http://localhost:8080/api/listings/1/photos/1
+Authorization: Bearer {{landlordToken}}
